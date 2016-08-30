@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete "logout",to: "sessions#destroy"
   
   get "petitessai" => "essai#essai"
+  
+  resources :categories , except: [:destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
