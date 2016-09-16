@@ -4,7 +4,7 @@
         <%= form_for(@article, html:{class:"form-horizontal",role:"form"}) do |f|%>
             <div class="form-group">
                 <div class="control-label col-sm-2">
-                    <%=f.label :title%>
+                    <%=f.label :title %>
                 </div>
                 <div class="col-sm-8">
                     <%=f.text_field :title, class: "form-control", placeholder:"Title of article", autofocus: true %>
@@ -16,6 +16,15 @@
                 </div>
                 <div class="col-sm-8">
                     <%=f.text_area :description, rows: 10,class:"form-control",placeholder:"Body of article"%>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-offset-2 col-sm-8">    
+                        <%=f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+                            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "ckeckbox") + cb.text} %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
